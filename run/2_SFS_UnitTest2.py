@@ -9,7 +9,7 @@ import numpy as np
 from sklearn import preprocessing
 from utilities.json_stuff import load_json
 from utilities.feature_tools import  data_shuffling
-from data_loader.feature_loader import load_feature_set, flat_list
+from data_loader.feature_loader import load_single_set, flat_list
 from mlxtend.feature_selection import SequentialFeatureSelector as SFS
 from learning_algorithms.models import random_forest, decicion_tree, adab_tree, lda, qda, naive
 
@@ -48,13 +48,7 @@ experiment_name = 'UnitTest2_LungCancer_'
 feature_set_all = [feature_set1_path, feature_set2_path,
                    feature_set3_path, feature_set4_path, feature_set5_path]
 
-features_4D, subject_name, subject_class, features_sqz = load_feature_set(feature_set_all)
-
-features_orig = flat_list(features_4D)
-subject_id = flat_list(subject_name)
-label_set = np.array(flat_list(subject_class))
-features_set = np.array(flat_list(features_sqz))
-features_set = features_set[:,14:]
+features_set, subject_name, label_set = load_single_set(feature_set_all[0])
 
 
 # Feature Normalization
