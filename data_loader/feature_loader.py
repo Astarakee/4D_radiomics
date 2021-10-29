@@ -22,7 +22,7 @@ def load_feature_set(feature_set_all):
             features_sqz.append(feature_set_squeeze)
             features_mean.append(mean_feature)
             
-    return features_4D, subject_name, subject_class, features_mean, features_sqz
+    return features_4D, subject_name, subject_class, features_mean
 
 
 
@@ -38,4 +38,16 @@ def load_unseen_set(path_to_unseen):
     feature_list, subject_ids, subject_label = feature_set_details(feature_set)
     mean_feature, _, _, feature_set_squeeze = feature_squeeze(feature_list)
     
-    return feature_list, subject_ids, subject_label, mean_feature, feature_set_squeeze
+    return feature_list, subject_ids, subject_label, feature_set_squeeze
+
+
+
+def load_single_set(path_to_single):
+    
+    feature_set = pd.read_csv(path_to_single)
+    set_values = feature_set.values
+    feature_values = set_values[:,3:].astype('float32')
+    subject_label = set_values[:,2].astype('int')
+    subject_ids = list(feature_set['Subject_ID'])
+    
+    return feature_values, subject_ids, subject_label
