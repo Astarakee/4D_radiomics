@@ -12,7 +12,7 @@
     "Training_Params": {
         "seed_val": 150,
         "n_fold_split": 5,
-        "kf_repeat": 5,
+        "kf_repeat": 10,
         "data_normalization": true,
         "test_labels_available": true
     },
@@ -33,14 +33,14 @@
         ]
     },
     "Analysis_After_SFS": {
-        "n_top_features": 3,
+        "n_top_features": 30,
         "model_with_SFS": "rf",
-        "feature_selection_log_name": "UnitTest1_sfs_.json"
+        "feature_selection_log_name": "UnitTest2_LungCancer__.json"
     },
     "Learning_Algorithm": {
-        "rf_model": false,
+        "rf_model": true,
         "dt_model": false,
-        "adab_model": true,
+        "adab_model": false,
         "lda_model": false,
         "qda_model": false,
         "naive_model": false
